@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CacheService } from '../cache.service';
+import { CacheService } from '../cache/cache.service';
 
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {

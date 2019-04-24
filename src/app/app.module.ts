@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptorProviders } from './interceptors';
 import { HttpClientModule } from '@angular/common/http';
-import { CacheViewComponent } from './cache-view/cache-view.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { XmlViewComponent } from './xml-view/xml-view.component';
+import { CacheViewComponent } from './cache/cache-view.component';
 
 @NgModule({
   declarations: [AppComponent, CacheViewComponent, XmlViewComponent],

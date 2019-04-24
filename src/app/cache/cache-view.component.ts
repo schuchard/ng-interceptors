@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { CacheService } from '../cache.service';
+import { CacheService } from './cache.service';
 import { LogService } from '../logging.service';
 
 @Component({

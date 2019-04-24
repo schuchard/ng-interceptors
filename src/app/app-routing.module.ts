@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CacheViewComponent } from './cache-view/cache-view.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
+import { CacheViewComponent } from './cache/cache-view.component';
 
 export const routes: Routes = [
   {
