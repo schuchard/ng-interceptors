@@ -13,9 +13,9 @@ export class AppComponent {
   title = 'ng-interceptors';
   delay = 2000;
   cache$ = this.cache.cache$;
+  logs$ = this.logService.logs$;
   cacheRequest$;
   request$;
-  logs$ = this.logService.logs$;
 
   constructor(
     private http: HttpClient,
