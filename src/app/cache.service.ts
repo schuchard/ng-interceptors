@@ -2,6 +2,7 @@ import { Injectable, InjectionToken, Inject } from '@angular/core';
 import * as storage from 'store';
 import { HttpRequest, HttpResponse, HttpEvent } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { LogService } from './logging.service';
 
 export const CACHE_STORAGE = new InjectionToken<StoreJsAPI>('Cache Storage', {
   providedIn: 'root',
@@ -19,7 +20,7 @@ export interface CacheValue {
 })
 export class CacheService {
   cache$ = new BehaviorSubject<CacheValue[]>(this.getAll());
-  constructor(@Inject(CACHE_STORAGE) private store: StoreJsAPI) {}
+  constructor(@Inject(CACHE_STORAGE) private store: StoreJsAPI, private logService: LogService) {}
 
   get(key: string): any {
     return this.store.get(key);
@@ -39,6 +40,7 @@ export class CacheService {
   clearAll() {
     this.store.clearAll();
     this.cacheChanged();
+    this.logService.reset();
   }
 
   getAll(): CacheValue[] {

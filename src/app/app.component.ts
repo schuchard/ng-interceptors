@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CacheService } from './cache.service';
 import { map, tap } from 'rxjs/operators';
+import { LogService } from './logging.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,13 @@ export class AppComponent {
   cache$ = this.cache.cache$;
   cacheRequest$;
   request$;
+  logs$ = this.logService.logs$;
 
-  constructor(private http: HttpClient, private cache: CacheService) {}
+  constructor(
+    private http: HttpClient,
+    private cache: CacheService,
+    private logService: LogService
+  ) {}
 
   requestCache(num: number) {
     this.http

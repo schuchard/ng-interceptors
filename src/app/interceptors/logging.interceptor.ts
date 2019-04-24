@@ -1,10 +1,11 @@
 import { finalize, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
+import { LogService } from '../logging.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private log: LogService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const started = Date.now();
@@ -23,7 +24,7 @@ export class LoggingInterceptor implements HttpInterceptor {
         const elapsed = Date.now() - started;
         const msg = `${req.method} "${req.urlWithParams}"
              ${ok} in ${elapsed} ms.`;
-        console.log('msg -> ', msg);
+        this.log.add(msg);
       })
     );
   }
