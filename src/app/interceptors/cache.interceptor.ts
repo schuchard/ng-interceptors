@@ -26,7 +26,7 @@ export class CachingInterceptor implements HttpInterceptor {
   }
 
   canCache(req: HttpRequest<any>): boolean {
-    return true;
+    return req.url.includes('todos');
   }
 }
 

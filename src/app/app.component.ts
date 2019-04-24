@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CacheService } from './cache.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,16 @@ import { CacheService } from './cache.service';
 export class AppComponent {
   title = 'ng-interceptors';
   cache$ = this.cache.cache$;
+  cacheRequest$: Observable<any>;
+  request$: Observable<any>;
   constructor(private http: HttpClient, private cache: CacheService) {}
 
-  requestCache() {
-    this.http
-      .get('https://jsonplaceholder.typicode.com/todos/1')
-      .subscribe(res => console.log(res));
+  requestCache(num: number) {
+    this.cacheRequest$ = this.http.get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`);
+  }
+
+  request() {
+    this.request$ = this.http.get(`https://jsonplaceholder.typicode.com/posts/1`);
   }
 
   clearCache() {

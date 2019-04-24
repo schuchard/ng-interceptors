@@ -1,19 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
-  <img
-    width="300"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-</div>
-<button (click)="requestCache()">request cache</button>
+<h1>NOT Cachable request</h1>
+<button (click)="request()">request</button>
+<br />
+<pre>{{ request$ | async | json }}</pre>
+
+<h1>Cachable request</h1>
+<button (click)="requestCache(1)">request cache 1</button>
+<button (click)="requestCache(2)">request cache 2</button>
+<br />
+<pre>{{ cacheRequest$ | async | json }}</pre>
+
+<h1>Cache</h1>
 <button (click)="clearCache()">clear cache</button>
-<ng-container *ngFor="let c of cache$ | async">
-  <ul>
-    <li>
-      <pre>{{ c | json }}</pre>
-    </li>
-  </ul>
-</ng-container>
+<ul>
+  <li *ngFor="let c of cache$ | async">
+    <pre>{{ c | json }}</pre>
+  </li>
+</ul>
 <router-outlet></router-outlet>
