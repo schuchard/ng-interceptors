@@ -24,6 +24,7 @@
     "@angular/router": "~7.2.0",
     "@schuchard/prettier": "3.0.0",
     "core-js": "^2.5.4",
+    "fast-xml-parser": "3.12.16",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.3.3",
     "store": "2.0.12",

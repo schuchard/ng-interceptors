@@ -2,6 +2,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CachingInterceptor } from './cache.interceptor';
 import { LoggingInterceptor } from './logging.interceptor';
+import { XmlInterceptor } from './xml.interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
@@ -13,4 +14,5 @@ export const httpInterceptorProviders = [
 
   { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: XmlInterceptor, multi: true },
 ];
