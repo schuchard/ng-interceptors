@@ -9,9 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CacheViewComponent } from './cache-view/cache-view.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { XmlViewComponent } from './xml-view/xml-view.component';
 
 @NgModule({
-  declarations: [AppComponent, CacheViewComponent],
+  declarations: [AppComponent, CacheViewComponent, XmlViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
