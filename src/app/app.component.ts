@@ -10,6 +10,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'ng-interceptors';
+  delay = 2000;
   cache$ = this.cache.cache$;
   cacheRequest$;
   request$;
@@ -21,7 +22,7 @@ export class AppComponent {
       .get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`)
       .pipe(
         map(res => (this.cacheRequest$ = res)),
-        tap(() => setTimeout(() => (this.cacheRequest$ = undefined), 1500))
+        tap(() => setTimeout(() => (this.cacheRequest$ = undefined), this.delay))
       )
       .subscribe();
   }
@@ -31,7 +32,7 @@ export class AppComponent {
       .get(`https://jsonplaceholder.typicode.com/posts/3`)
       .pipe(
         map(res => (this.request$ = res)),
-        tap(() => setTimeout(() => (this.request$ = undefined), 1500))
+        tap(() => setTimeout(() => (this.request$ = undefined), this.delay))
       )
       .subscribe();
   }

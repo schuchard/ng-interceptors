@@ -8,18 +8,24 @@ export const CACHE_STORAGE = new InjectionToken<StoreJsAPI>('Cache Storage', {
   factory: () => storage,
 });
 
+export interface CacheValue {
+  key: string;
+  body: any;
+  dateAdded: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class CacheService {
-  cache$ = new BehaviorSubject(this.getAll());
+  cache$ = new BehaviorSubject<CacheValue[]>(this.getAll());
   constructor(@Inject(CACHE_STORAGE) private store: StoreJsAPI) {}
 
   get(key: string): any {
     return this.store.get(key);
   }
 
-  set(key: string, value: any) {
+  set(key: string, value: CacheValue) {
     this.store.remove(key);
     this.store.set(key, value);
     this.cacheChanged();
@@ -35,7 +41,7 @@ export class CacheService {
     this.cacheChanged();
   }
 
-  getAll() {
+  getAll(): CacheValue[] {
     const cache = [];
     this.store.each((val, key) => cache.push({ [key]: val }));
     return cache;

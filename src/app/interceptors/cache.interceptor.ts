@@ -24,7 +24,7 @@ export class CachingInterceptor implements HttpInterceptor {
     const cachedResponse = this.cache.get(req.urlWithParams);
     // return HttpResponse so that HttpClient methods return a value
     return cachedResponse
-      ? of(new HttpResponse({ body: cachedResponse }))
+      ? of(new HttpResponse({ body: cachedResponse.body }))
       : sendRequest(req, next, this.cache);
   }
 
@@ -49,7 +49,11 @@ function sendRequest(
     tap(event => {
       // There may be other events besides the response.
       if (event instanceof HttpResponse) {
-        cache.set(req.urlWithParams, event.body); // Update the cache.
+        cache.set(req.urlWithParams, {
+          key: req.urlWithParams,
+          body: event.body,
+          dateAdded: Date.now(),
+        });
       }
     })
   );
