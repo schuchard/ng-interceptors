@@ -1,2 +1,10 @@
-<h1>ng interceptors</h1>
+<mat-toolbar>
+  <span>ng interceptors</span>
+  <span class="fill-remaining-space"></span>
+  <ng-container *ngFor="let route of routes">
+    <a [routerLink]="route.path" routerLinkActive #rla="routerLinkActive"
+      ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">{{ route.path }}</button></a
+    >
+  </ng-container>
+</mat-toolbar>
 <router-outlet></router-outlet>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CacheViewComponent } from './cache-view/cache-view.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'cache',
     component: CacheViewComponent,
