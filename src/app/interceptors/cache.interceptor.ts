@@ -23,7 +23,8 @@ export class CachingInterceptor implements HttpInterceptor {
 
     const cachedResponse = this.cache.get(req.urlWithParams);
     return cachedResponse
-      ? of(new HttpResponse({ body: cachedResponse }))
+      ? // returned response so that HttpClient methods return a value
+        of(new HttpResponse({ body: cachedResponse }))
       : sendRequest(req, next, this.cache);
   }
 
