@@ -6,11 +6,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LogService {
   private LOGS = new BehaviorSubject([]);
-  constructor() {}
 
   get logs$() {
     return this.LOGS.asObservable();
   }
+
+  constructor() {}
+
   add(msg: any) {
     this.LOGS.next(this.LOGS.getValue().concat([msg]));
   }
