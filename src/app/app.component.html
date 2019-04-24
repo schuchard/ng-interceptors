@@ -1,13 +1,13 @@
 <h1>NOT Cachable request</h1>
-<button (click)="request()">request</button>
+<button (click)="request()" [disabled]="request$">request</button>
 <br />
-<pre>{{ request$ | async | json }}</pre>
+<pre>{{ request$ | json }}</pre>
 
 <h1>Cachable request</h1>
-<button (click)="requestCache(1)">request cache 1</button>
-<button (click)="requestCache(2)">request cache 2</button>
+<button (click)="requestCache(1)" [disabled]="cacheRequest$">request cache 1</button>
+<button (click)="requestCache(2)" [disabled]="cacheRequest$">request cache 2</button>
 <br />
-<pre>{{ cacheRequest$ | async | json }}</pre>
+<pre>{{ cacheRequest$ | json }}</pre>
 
 <h1>Cache</h1>
 <button (click)="clearCache()">clear cache</button>
