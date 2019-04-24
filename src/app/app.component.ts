@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   request() {
-    this.request$ = this.http.get(`https://jsonplaceholder.typicode.com/posts/1`);
+    this.request$ = this.http.get(`https://jsonplaceholder.typicode.com/posts/3`);
   }
 
   clearCache() {
