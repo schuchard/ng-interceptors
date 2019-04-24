@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CacheViewComponent } from './cache-view.component';
+import { ScopesComponent } from './scopes.component';
 
-describe('CacheViewComponent', () => {
-  let component: CacheViewComponent;
-  let fixture: ComponentFixture<CacheViewComponent>;
+describe('ScopesComponent', () => {
+  let component: ScopesComponent;
+  let fixture: ComponentFixture<ScopesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CacheViewComponent],
+      declarations: [ScopesComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CacheViewComponent);
+    fixture = TestBed.createComponent(ScopesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

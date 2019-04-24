@@ -8,11 +8,12 @@ import { httpInterceptorProviders } from './interceptors';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { XmlViewComponent } from './xml-view/xml-view.component';
-import { CacheViewComponent } from './cache/cache-view.component';
+import { ScopesComponent } from './scopes/scopes.component';
+import { CacheComponent } from './cache/cache.component';
+import { XmlComponent } from './xml/xml.component';
 
 @NgModule({
-  declarations: [AppComponent, CacheViewComponent, XmlViewComponent],
+  declarations: [AppComponent, CacheComponent, XmlComponent, ScopesComponent, ScopesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

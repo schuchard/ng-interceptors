@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { XmlViewComponent } from './xml-view.component';
+import { XmlViewComponent } from './xml.component';
 
 describe('XmlViewComponent', () => {
   let component: XmlViewComponent;

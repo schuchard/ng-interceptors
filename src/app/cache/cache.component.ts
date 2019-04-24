@@ -5,11 +5,11 @@ import { CacheService } from './cache.service';
 import { LogService } from '../logging.service';
 
 @Component({
-  selector: 'app-cache-view',
-  templateUrl: './cache-view.component.html',
-  styleUrls: ['./cache-view.component.scss'],
+  selector: 'app-cache',
+  templateUrl: './cache.component.html',
+  styleUrls: ['./cache.component.scss'],
 })
-export class CacheViewComponent {
+export class CacheComponent {
   title = 'ng-interceptors';
   delay = 1000;
   cache$ = this.cache.cache$;

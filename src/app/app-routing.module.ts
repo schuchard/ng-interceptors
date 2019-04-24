@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { XmlViewComponent } from './xml-view/xml-view.component';
-import { CacheViewComponent } from './cache/cache-view.component';
+import { ScopesComponent } from './scopes/scopes.component';
+import { CacheComponent } from './cache/cache.component';
+import { XmlComponent } from './xml/xml.component';
 
 export const routes: Routes = [
   {
     path: 'cache',
-    component: CacheViewComponent,
+    component: CacheComponent,
   },
   {
     path: 'xml',
-    component: XmlViewComponent,
+    component: XmlComponent,
+  },
+  {
+    path: 'scopes',
+    component: ScopesComponent,
   },
 ];
 

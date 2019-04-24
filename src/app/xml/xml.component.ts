@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-xml-view',
-  templateUrl: './xml-view.component.html',
-  styleUrls: ['./xml-view.component.scss'],
+  selector: 'app-xml',
+  templateUrl: './xml.component.html',
+  styleUrls: ['./xml.component.scss'],
 })
-export class XmlViewComponent implements OnInit {
+export class XmlComponent implements OnInit {
   response;
   constructor(private http: HttpClient) {}
 
