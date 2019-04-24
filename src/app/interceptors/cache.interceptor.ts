@@ -29,6 +29,7 @@ export class CachingInterceptor implements HttpInterceptor {
   }
 
   canCache(req: HttpRequest<any>): boolean {
+    // only cache `todo` routes
     return req.url.includes('todos');
   }
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ScopesComponent } from './scopes/scopes.component';
 import { CacheComponent } from './cache/cache.component';
 import { XmlComponent } from './xml/xml.component';
+import { FourOFourComponent } from './four-o-four/four-o-four.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'scopes',
     component: ScopesComponent,
+  },
+  {
+    path: '**',
+    component: FourOFourComponent,
   },
 ];
 

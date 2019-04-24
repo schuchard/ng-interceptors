@@ -6,6 +6,6 @@ import { routes } from './app-routing.module';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  routes = routes;
+  routes = routes.slice(0, -1);
   constructor() {}
 }
