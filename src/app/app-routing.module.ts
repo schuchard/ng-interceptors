@@ -19,6 +19,11 @@ export const routes: Routes = [
     component: ScopesComponent,
   },
   {
+    path: '',
+    redirectTo: '/cache',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     component: FourOFourComponent,
   },
