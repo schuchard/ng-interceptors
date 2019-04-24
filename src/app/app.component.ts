@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { routes } from './app-routing.module';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { LogService } from './logging.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,5 +10,12 @@ import { routes } from './app-routing.module';
 })
 export class AppComponent {
   routes = routes.slice(0, -2);
-  constructor() {}
+  mobileQuery;
+  logs$ = this.logService.logs$;
+
+  constructor(private breakpointObserver: BreakpointObserver, private logService: LogService) {
+    this.breakpointObserver
+      .observe([Breakpoints.HandsetPortrait])
+      .subscribe(({ matches }) => (this.mobileQuery = matches));
+  }
 }

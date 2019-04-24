@@ -1,10 +1,33 @@
-<mat-toolbar>
-  <span>ng interceptors</span>
-  <span class="fill-remaining-space"></span>
-  <ng-container *ngFor="let route of routes">
-    <a [routerLink]="route.path" routerLinkActive #rla="routerLinkActive"
-      ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">{{ route.path }}</button></a
+<div class="example-container" [class.example-is-mobile]="mobileQuery">
+  <mat-toolbar>
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>Angular Interceptors</span>
+    <span class="fill-remaining-space"></span>
+    <ng-container *ngIf="!mobileQuery">
+      <a
+        *ngFor="let route of routes"
+        [routerLink]="route.path"
+        routerLinkActive
+        #rla="routerLinkActive"
+        ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">
+          {{ route.path }}
+        </button></a
+      >
+    </ng-container>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery"
+      fixedTopGap="56"
     >
-  </ng-container>
-</mat-toolbar>
-<router-outlet></router-outlet>
+      {{ logs$ | async }}
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

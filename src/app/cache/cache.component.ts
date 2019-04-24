@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CacheService } from './cache.service';
-import { LogService } from '../logging.service';
 
 @Component({
   selector: 'app-cache',
@@ -13,15 +12,10 @@ export class CacheComponent {
   title = 'ng-interceptors';
   delay = 1000;
   cache$ = this.cache.cache$;
-  logs$ = this.logService.logs$;
   cacheRequest$;
   request$;
 
-  constructor(
-    private http: HttpClient,
-    private cache: CacheService,
-    private logService: LogService
-  ) {}
+  constructor(private http: HttpClient, private cache: CacheService) {}
 
   requestCache(num: number) {
     this.http
