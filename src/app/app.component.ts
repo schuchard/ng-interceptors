@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CacheService } from './cache.service';
-import { map, tap } from 'rxjs/operators';
-import { LogService } from './logging.service';
 
 @Component({
   selector: 'app-root',
@@ -10,34 +6,5 @@ import { LogService } from './logging.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ng-interceptors';
-  delay = 1000;
-  cache$ = this.cache.cache$;
-  logs$ = this.logService.logs$;
-  cacheRequest$;
-  request$;
-
-  constructor(
-    private http: HttpClient,
-    private cache: CacheService,
-    private logService: LogService
-  ) {}
-
-  requestCache(num: number) {
-    this.http
-      .get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`)
-      .pipe(map(res => (this.cacheRequest$ = res)))
-      .subscribe();
-  }
-
-  request() {
-    this.http
-      .get(`https://jsonplaceholder.typicode.com/posts/3`)
-      .pipe(map(res => (this.request$ = res)))
-      .subscribe();
-  }
-
-  clearCache() {
-    this.cache.clearAll();
-  }
+  constructor() {}
 }

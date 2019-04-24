@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptorProviders } from './interceptors';
 import { HttpClientModule } from '@angular/common/http';
+import { CacheViewComponent } from './cache-view/cache-view.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CacheViewComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
