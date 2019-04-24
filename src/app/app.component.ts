@@ -11,7 +11,7 @@ import { LogService } from './logging.service';
 })
 export class AppComponent {
   title = 'ng-interceptors';
-  delay = 2000;
+  delay = 1000;
   cache$ = this.cache.cache$;
   logs$ = this.logService.logs$;
   cacheRequest$;
@@ -26,20 +26,14 @@ export class AppComponent {
   requestCache(num: number) {
     this.http
       .get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`)
-      .pipe(
-        map(res => (this.cacheRequest$ = res)),
-        tap(() => setTimeout(() => (this.cacheRequest$ = undefined), this.delay))
-      )
+      .pipe(map(res => (this.cacheRequest$ = res)))
       .subscribe();
   }
 
   request() {
     this.http
       .get(`https://jsonplaceholder.typicode.com/posts/3`)
-      .pipe(
-        map(res => (this.request$ = res)),
-        tap(() => setTimeout(() => (this.request$ = undefined), this.delay))
-      )
+      .pipe(map(res => (this.request$ = res)))
       .subscribe();
   }
 

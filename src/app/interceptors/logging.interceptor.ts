@@ -22,8 +22,7 @@ export class LoggingInterceptor implements HttpInterceptor {
       // Log when response observable either completes or errors
       finalize(() => {
         const elapsed = Date.now() - started;
-        const msg = `${req.method} "${req.urlWithParams}"
-             ${ok} in ${elapsed} ms.`;
+        const msg = `"${req.urlWithParams}" ${ok} in ${elapsed} ms.`;
         this.log.add(msg);
       })
     );
