@@ -5,3 +5,18 @@
     flex: 1;
   }
 }
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  button {
+    margin: 4px;
+  }
+}
+
+.json-output {
+  height: 95px;
+  margin: 8px 0;
+}

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { httpInterceptorProviders } from './interceptors';
 import { ScopesComponent } from './scopes/scopes.component';
@@ -38,6 +39,7 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     LayoutModule,
     MatListModule,
+    MatDividerModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

@@ -1,6 +1,12 @@
 <h1>Scopes</h1>
 
-<button mat-button (click)="request()">request scopes</button>
-<button mat-button (click)="scopes.toggleAdmin()">Toggle isAdmin: {{ scopes.isAdmin }}</button>
+<button mat-raised-button (click)="request()">request scopes</button>
+<button
+  mat-raised-button
+  (click)="scopes.toggleAdmin()"
+  [color]="scopes.isAdmin ? 'primary' : 'warn'"
+>
+  Toggle isAdmin: {{ scopes.isAdmin }}
+</button>
 
 <pre>{{ response | json }}</pre>

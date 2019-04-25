@@ -12,22 +12,21 @@ export class CacheComponent {
   title = 'ng-interceptors';
   delay = 1000;
   cache$ = this.cache.cache$;
-  cacheRequest$;
-  request$;
+  response;
 
   constructor(private http: HttpClient, private cache: CacheService) {}
 
   requestCache(num: number) {
     this.http
       .get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`)
-      .pipe(map(res => (this.cacheRequest$ = res)))
+      .pipe(map(res => (this.response = res)))
       .subscribe();
   }
 
   request() {
     this.http
       .get(`https://jsonplaceholder.typicode.com/posts/3`)
-      .pipe(map(res => (this.request$ = res)))
+      .pipe(map(res => (this.response = res)))
       .subscribe();
   }
 

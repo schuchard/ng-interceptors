@@ -1,5 +1,5 @@
 <div class="app-container" [class.example-is-mobile]="mobileQuery">
-  <mat-toolbar class="toolbar">
+  <mat-toolbar class="toolbar" color="primary">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <span>Angular Interceptors</span>
     <span class="fill-remaining-space"></span>
@@ -19,6 +19,7 @@
         <ng-container *ngTemplateOutlet="navLinks"></ng-container>
       </div>
       <h2 class="tac">Network Requests</h2>
+      <mat-divider></mat-divider>
       <div class="log-container">
         <mat-list>
           <mat-list-item *ngFor="let log of logs$ | async">
@@ -40,7 +41,7 @@
 
 <ng-template #navLinks>
   <a *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive #rla="routerLinkActive"
-    ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">
+    ><button mat-flat-button [color]="rla.isActive ? 'accent' : 'primary'">
       {{ route.path }}
     </button></a
   >

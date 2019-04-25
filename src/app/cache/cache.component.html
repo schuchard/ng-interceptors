@@ -1,20 +1,18 @@
-<h2>NOT Cachable request</h2>
-<button mat-button (click)="request()">request</button>
-<button mat-button (click)="request$ = undefined">clear request</button>
-<br />
-<pre>{{ request$ | json }}</pre>
+<div class="controls">
+  <button mat-raised-button (click)="request()">non-cachable request</button>
+  <button mat-raised-button (click)="requestCache(1)">cachable request 1</button>
+  <button mat-raised-button (click)="requestCache(2)">cachable request 2</button>
+  <button mat-raised-button (click)="response = undefined" color="warn">clear request</button>
+</div>
 
-<h2>Cachable request</h2>
-<button mat-button (click)="requestCache(1)">request cache 1</button>
-<button mat-button (click)="requestCache(2)">request cache 2</button>
-<button mat-button (click)="cacheRequest$ = undefined">clear request</button>
-<br />
-<pre>{{ cacheRequest$ | json }}</pre>
-
+<div class="json-output">
+  <pre>{{ response | json }}</pre>
+</div>
+<mat-divider></mat-divider>
 <div class="cache-log">
   <div class="cache">
     <h2>Cache</h2>
-    <button mat-button (click)="clearCache()">clear cache</button>
+    <button mat-raised-button (click)="clearCache()" color="warn">clear cache & logs</button>
     <ul>
       <li *ngFor="let c of cache$ | async">
         <pre>{{ c | json }}</pre>
