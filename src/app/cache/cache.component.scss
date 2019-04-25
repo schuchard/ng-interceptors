@@ -19,4 +19,13 @@
 .json-output {
   height: 95px;
   margin: 8px 0;
+  pre {
+    white-space: pre-wrap;
+  }
+}
+
+.cache-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

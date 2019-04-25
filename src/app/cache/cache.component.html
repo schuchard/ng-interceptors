@@ -1,3 +1,4 @@
+<h1>Caching</h1>
 <div class="controls">
   <button mat-raised-button (click)="request()">non-cachable request</button>
   <button mat-raised-button (click)="requestCache(1)">cachable request 1</button>
@@ -8,15 +9,13 @@
 <div class="json-output">
   <pre>{{ response | json }}</pre>
 </div>
-<mat-divider></mat-divider>
-<div class="cache-log">
+
+<div class="cache-log" *ngIf="!!(cache$ | async).length">
   <div class="cache">
     <h2>Cache</h2>
     <button mat-raised-button (click)="clearCache()" color="warn">clear cache & logs</button>
-    <ul>
-      <li *ngFor="let c of cache$ | async">
-        <pre>{{ c | json }}</pre>
-      </li>
-    </ul>
+    <div class="cache-list">
+      <pre *ngFor="let c of cache$ | async">{{ c | json }}</pre>
+    </div>
   </div>
 </div>
