@@ -9,21 +9,21 @@ export class LoggingInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const started = Date.now();
-    let ok: string;
+    let status: string;
 
     // extend server response observable with logging
     return next.handle(req).pipe(
       tap(
         // Succeeds when there is a response; ignore other events
-        event => (ok = event instanceof HttpResponse ? 'succeeded' : 'failed'),
+        event => (status = event instanceof HttpResponse ? 'success' : 'fail'),
         // Operation failed; error is an HttpErrorResponse
-        error => (ok = 'failed')
+        error => (status = 'failed')
       ),
       // Log when response observable either completes or errors
       finalize(() => {
         const elapsed = Date.now() - started;
-        const msg = `"${req.urlWithParams}" ${ok} in ${elapsed} ms.`;
-        this.log.add(msg);
+        const url = req.urlWithParams.replace(new RegExp('^//|^.*?:(//)?', 'gi'), '');
+        this.log.add({ url, status, elapsed, fullUrl: req.urlWithParams });
       })
     );
   }

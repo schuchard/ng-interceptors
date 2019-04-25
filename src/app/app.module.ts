@@ -16,6 +16,7 @@ import { ScopesComponent } from './scopes/scopes.component';
 import { CacheComponent } from './cache/cache.component';
 import { XmlComponent } from './xml/xml.component';
 import { FourOFourComponent } from './four-o-four/four-o-four.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FourOFourComponent } from './four-o-four/four-o-four.component';
     MatSidenavModule,
     MatIconModule,
     LayoutModule,
+    MatListModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

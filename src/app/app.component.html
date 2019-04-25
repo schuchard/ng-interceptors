@@ -4,15 +4,7 @@
     <span>Angular Interceptors</span>
     <span class="fill-remaining-space"></span>
     <ng-container *ngIf="!mobileQuery">
-      <a
-        *ngFor="let route of routes"
-        [routerLink]="route.path"
-        routerLinkActive
-        #rla="routerLinkActive"
-        ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">
-          {{ route.path }}
-        </button></a
-      >
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
     </ng-container>
   </mat-toolbar>
 
@@ -23,7 +15,21 @@
       [fixedInViewport]="mobileQuery"
       fixedTopGap="56"
     >
-      {{ logs$ | async }}
+      <div class="mobile-nav-links" *ngIf="mobileQuery">
+        <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+      </div>
+      <h2 class="tac">Network Requests</h2>
+      <div class="log-container">
+        <mat-list>
+          <mat-list-item *ngFor="let log of logs$ | async">
+            <h3 matLine>{{ log.url }}</h3>
+            <div matLine class="log-bottom-row">
+              <span>elapsed time: {{ log.elapsed }}ms</span>
+              <span>{{ log.status }}</span>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -31,3 +37,11 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+
+<ng-template #navLinks>
+  <a *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive #rla="routerLinkActive"
+    ><button mat-button [color]="rla.isActive ? 'accent' : 'primary'">
+      {{ route.path }}
+    </button></a
+  >
+</ng-template>

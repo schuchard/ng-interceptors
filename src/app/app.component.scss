@@ -35,5 +35,28 @@ mat-sidenav {
   flex-direction: column;
   padding: 4px;
   width: 75%;
-  max-width: 350px;
+  max-width: 320px;
+}
+
+.tac {
+  text-align: center;
+}
+
+.mobile-nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mat-list-base {
+  .log-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-weight: 300;
+      font-style: italic;
+      padding-right: 2px;
+    }
+  }
 }
