@@ -29,6 +29,14 @@ export class CacheService {
     return this.store.get(key);
   }
 
+  getKeys(): string[] {
+    return this.getAll().map(c => c.key);
+  }
+
+  keyExists(key: string): boolean {
+    return this.getAll().some(k => k.key === key);
+  }
+
   set(key: string, value: CacheValue) {
     this.store.remove(key);
     this.store.set(key, value);
@@ -48,7 +56,7 @@ export class CacheService {
 
   getAll(): CacheValue[] {
     const cache = [];
-    this.store.each((val, key) => cache.push({ [key]: val }));
+    this.store.each((val, key) => cache.push(val));
     return cache;
   }
 

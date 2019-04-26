@@ -1,8 +1,13 @@
 <h1>Caching</h1>
 <div class="controls">
-  <button mat-raised-button (click)="request()">non-cachable request</button>
-  <button mat-raised-button (click)="requestCache(1)">cachable request 1</button>
-  <button mat-raised-button (click)="requestCache(2)">cachable request 2</button>
+  <button
+    *ngFor="let link of links"
+    mat-raised-button
+    (click)="request(link.url)"
+    [ngClass]="{ 'in-cache': inCache(link.url) }"
+  >
+    {{ link.name }}
+  </button>
   <button mat-raised-button (click)="response = undefined" color="warn">clear request</button>
 </div>
 

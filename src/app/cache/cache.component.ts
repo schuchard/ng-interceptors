@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CacheService } from './cache.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cache',
@@ -9,28 +10,30 @@ import { CacheService } from './cache.service';
   styleUrls: ['./cache.component.scss'],
 })
 export class CacheComponent {
-  title = 'ng-interceptors';
+  destroy$ = new Subject();
   delay = 1000;
   cache$ = this.cache.cache$;
+  links = [
+    { url: 'https://jsonplaceholder.typicode.com/todos/1', name: 'Cache todos/1' },
+    { url: 'https://jsonplaceholder.typicode.com/todos/2', name: 'Cache todos/2' },
+    { url: 'https://jsonplaceholder.typicode.com/posts/3', name: 'posts/3' },
+  ];
   response;
 
   constructor(private http: HttpClient, private cache: CacheService) {}
 
-  requestCache(num: number) {
+  request(url: string) {
     this.http
-      .get(`https://jsonplaceholder.typicode.com/todos/${num || 1}`)
-      .pipe(map(res => (this.response = res)))
-      .subscribe();
-  }
-
-  request() {
-    this.http
-      .get(`https://jsonplaceholder.typicode.com/posts/3`)
+      .get(url)
       .pipe(map(res => (this.response = res)))
       .subscribe();
   }
 
   clearCache() {
     this.cache.clearAll();
+  }
+
+  inCache(url: string) {
+    return this.cache.keyExists(url);
   }
 }
