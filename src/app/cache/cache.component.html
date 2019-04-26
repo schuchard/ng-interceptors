@@ -23,7 +23,7 @@
 <div class="cache-log d-flex" *ngIf="!!(cache$ | async).length">
   <div class="cache">
     <h2>Cached Requests</h2>
-    <button mat-raised-button (click)="clearCache()" color="warn">clear cache & logs</button>
+    <button mat-button (click)="clearCache()">clear cache & logs</button>
     <div class="cache-list d-flex flex-wrap">
       <div class="cache-item m-2 p-3" *ngFor="let c of cache$ | async">
         <div class="cache-item-header d-flex justify-content-between align-items-center mb-3">
