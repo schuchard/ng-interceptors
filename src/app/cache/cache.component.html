@@ -1,6 +1,7 @@
-<h1>Caching</h1>
-<div class="controls">
+<h1>Caching Interceptor</h1>
+<div class="controls d-flex flex-wrap mt-3">
   <button
+    class="m-2"
     *ngFor="let link of links"
     mat-raised-button
     (click)="request(link.url)"
@@ -8,19 +9,31 @@
   >
     {{ link.name }}
   </button>
-  <button mat-raised-button (click)="response = undefined" color="warn">clear request</button>
+  <button class="m-2" mat-raised-button (click)="response = undefined" color="warn">
+    clear request
+  </button>
 </div>
 
-<div class="json-output">
+<div class="json-output my-3">
   <pre>{{ response | json }}</pre>
 </div>
-
-<div class="cache-log" *ngIf="!!(cache$ | async).length">
+<mat-divider></mat-divider>
+<div class="cache-log d-flex" *ngIf="!!(cache$ | async).length">
   <div class="cache">
-    <h2>Cache</h2>
+    <h2>Cached Requests</h2>
     <button mat-raised-button (click)="clearCache()" color="warn">clear cache & logs</button>
-    <div class="cache-list">
-      <pre *ngFor="let c of cache$ | async">{{ c | json }}</pre>
+    <div class="cache-list d-flex flex-wrap">
+      <div class="cache-item m-2 p-3" *ngFor="let c of cache$ | async">
+        <div class="cache-item-header d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex flex-column">
+            <h4 class="m-0 mb-1">Cached request</h4>
+            <small>{{ c.key }}</small>
+          </div>
+          <button mat-icon-button class="ml-3"><mat-icon>close</mat-icon></button>
+        </div>
+        <mat-divider></mat-divider>
+        <pre>{{ c.body | json }}</pre>
+      </div>
     </div>
   </div>
 </div>
