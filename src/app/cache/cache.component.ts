@@ -36,4 +36,8 @@ export class CacheComponent {
   inCache(url: string) {
     return this.cache.keyExists(url);
   }
+
+  removeCachedItem(key: string) {
+    this.cache.remove(key);
+  }
 }

@@ -31,7 +31,9 @@
             <h4 class="m-0 mb-1">Cached request</h4>
             <small>{{ c.key }}</small>
           </div>
-          <button mat-icon-button class="ml-3"><mat-icon>close</mat-icon></button>
+          <button mat-icon-button class="ml-3" (click)="removeCachedItem(c.key)">
+            <mat-icon>close</mat-icon>
+          </button>
         </div>
         <mat-divider></mat-divider>
         <pre>{{ c.body | json }}</pre>

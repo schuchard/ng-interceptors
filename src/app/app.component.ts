@@ -14,17 +14,13 @@ export class AppComponent {
   isMobile;
   logs$ = this.logService.logs$;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private logService: LogService,
-    private cache: CacheService
-  ) {
+  constructor(private breakpointObserver: BreakpointObserver, private logService: LogService) {
     this.breakpointObserver
       .observe([Breakpoints.HandsetPortrait])
       .subscribe(({ matches }) => (this.isMobile = matches));
   }
 
-  clearCacheLogs() {
-    this.cache.clearAll();
+  clearLogs() {
+    this.logService.reset();
   }
 }
