@@ -1,21 +1,21 @@
-<div class="app-container" [class.example-is-mobile]="mobileQuery">
+<div class="app-container" [class.example-is-mobile]="isMobile">
   <mat-toolbar class="toolbar" color="primary">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <span>Angular Interceptors</span>
     <span class="fill-remaining-space"></span>
-    <ng-container *ngIf="!mobileQuery">
+    <ng-container *ngIf="!isMobile">
       <ng-container *ngTemplateOutlet="navLinks"></ng-container>
     </ng-container>
   </mat-toolbar>
-
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery ? 56 : 0">
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="isMobile ? 56 : 0">
     <mat-sidenav
       #snav
-      [mode]="mobileQuery ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery"
+      [opened]="isMobile ? false : true"
+      [mode]="isMobile ? 'over' : 'side'"
+      [fixedInViewport]="isMobile"
       fixedTopGap="56"
     >
-      <div class="mobile-nav-links" *ngIf="mobileQuery">
+      <div class="mobile-nav-links" *ngIf="isMobile">
         <ng-container *ngTemplateOutlet="navLinks"></ng-container>
       </div>
       <h2 class="tac">Network Requests</h2>

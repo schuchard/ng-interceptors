@@ -11,7 +11,7 @@ import { CacheService } from './cache/cache.service';
 })
 export class AppComponent {
   routes = routes.slice(0, -2);
-  mobileQuery;
+  isMobile;
   logs$ = this.logService.logs$;
 
   constructor(
@@ -21,7 +21,7 @@ export class AppComponent {
   ) {
     this.breakpointObserver
       .observe([Breakpoints.HandsetPortrait])
-      .subscribe(({ matches }) => (this.mobileQuery = matches));
+      .subscribe(({ matches }) => (this.isMobile = matches));
   }
 
   clearCacheLogs() {
