@@ -1,22 +1,24 @@
 <h1>Caching Interceptor</h1>
-<div class="controls d-flex flex-wrap mt-3">
-  <button
-    class="m-2"
-    *ngFor="let link of links"
-    mat-raised-button
-    (click)="request(link.url)"
-    [ngClass]="{ 'in-cache': inCache(link.url) }"
-  >
-    {{ link.name }}
-  </button>
-  <button class="m-2" mat-raised-button (click)="response = undefined" color="warn">
-    clear request
-  </button>
+<div class="controls d-flex mt-3 align-items-center">
+  <div class="d-flex flex-column">
+    <button
+      class="m-2"
+      *ngFor="let link of links"
+      mat-raised-button
+      (click)="request(link.url)"
+      [ngClass]="{ 'in-cache': inCache(link.url) }"
+    >
+      {{ link.name }}
+    </button>
+    <button class="m-2" mat-raised-button (click)="response = undefined" color="warn">
+      clear request
+    </button>
+  </div>
+  <div class="json-output my-3 ml-4">
+    <pre>{{ response | json }}</pre>
+  </div>
 </div>
 
-<div class="json-output my-3">
-  <pre>{{ response | json }}</pre>
-</div>
 <mat-divider></mat-divider>
 <div class="cache-log d-flex" *ngIf="!!(cache$ | async).length">
   <div class="cache">
