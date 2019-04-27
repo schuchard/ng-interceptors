@@ -2,7 +2,11 @@ import { map, filter } from 'rxjs/operators';
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import * as fastXmlParser from 'fast-xml-parser';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
-import { of } from 'rxjs';
+
+export interface XMLParser {
+  parse: any;
+  validate: any;
+}
 
 export const XmlParser = new InjectionToken('xml2js', {
   providedIn: 'root',
@@ -11,7 +15,7 @@ export const XmlParser = new InjectionToken('xml2js', {
 
 @Injectable()
 export class XmlInterceptor implements HttpInterceptor {
-  constructor(@Inject(XmlParser) private xml: { parse: any; validate: any }) {}
+  constructor(@Inject(XmlParser) private xml: XMLParser) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // extend server response observable with logging

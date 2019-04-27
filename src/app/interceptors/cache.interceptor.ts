@@ -16,7 +16,7 @@ export class CachingInterceptor implements HttpInterceptor {
   constructor(private cache: CacheService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // continue if not cachable.
+    // continue request if not cachable.
     if (!this.canCache(req)) {
       return next.handle(req);
     }
@@ -43,11 +43,8 @@ function sendRequest(
   next: HttpHandler,
   cache: CacheService
 ): Observable<HttpEvent<any>> {
-  // No headers allowed in npm search request
-  const noHeaderReq = req.clone({ headers: new HttpHeaders() });
-
-  return next.handle(noHeaderReq).pipe(
-    tap(event => {
+  return next.handle(req).pipe(
+    tap((event: HttpEvent<any>) => {
       // There may be other events besides the response.
       if (event instanceof HttpResponse) {
         cache.set(req.urlWithParams, {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { ScopesService } from './scopes.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { ScopesService } from './scopes.service';
 })
 export class ScopesComponent implements OnInit {
   response;
-  constructor(private http: HttpClient, public scopes: ScopesService) {}
+  constructor(private http: HttpClient, public scopesService: ScopesService) {}
 
   ngOnInit() {}
 

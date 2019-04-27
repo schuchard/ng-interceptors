@@ -6,18 +6,21 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ScopesInterceptor implements HttpInterceptor {
-  constructor(private scopes: ScopesService, private router: Router) {}
+  constructor(private scopesService: ScopesService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if (this.scopes.protectedRoutes(req.urlWithParams)) {
-      if (this.scopes.isAdmin) {
-        return next.handle(req);
-      } else {
-        this.router.navigate(['404']);
-        return of(undefined);
-      }
+    // not protected, pass request through
+    if (!this.scopesService.protectedRoutes(req.urlWithParams)) {
+      return next.handle(req);
     }
 
-    return next.handle(req);
+    // route is protected, only allow admins
+    if (this.scopesService.isAdmin) {
+      return next.handle(req);
+    } else {
+      // not admin, redirect and cancel request
+      this.router.navigate(['404']);
+      return of(undefined);
+    }
   }
 }
