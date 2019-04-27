@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private logService: LogService) {
     this.breakpointObserver
-      .observe([Breakpoints.HandsetPortrait])
+      .observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait])
       .subscribe(({ matches }) => (this.isMobile = matches));
   }
 

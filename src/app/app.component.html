@@ -15,7 +15,7 @@
       [fixedInViewport]="isMobile"
       fixedTopGap="56"
     >
-      <div class="mobile-nav-links" *ngIf="isMobile">
+      <div class="mobile-nav-links pt-2 d-flex justify-content-around" *ngIf="isMobile">
         <ng-container *ngTemplateOutlet="navLinks"></ng-container>
       </div>
       <h2 class="tac">Network Requests</h2>

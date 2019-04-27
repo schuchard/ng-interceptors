@@ -20,12 +20,12 @@
 </div>
 
 <mat-divider></mat-divider>
-<div class="cache-log d-flex" *ngIf="!!(cache$ | async).length">
-  <div class="cache">
+<ng-container *ngIf="!!(cache$ | async).length">
+  <div class="cache d-flex flex-column align-items-center align-items-sm-start">
     <h2>Cached Requests</h2>
-    <button mat-button (click)="clearCache()">clear cache & logs</button>
-    <div class="cache-list d-flex flex-wrap">
-      <div class="cache-item m-2 p-3" *ngFor="let c of cache$ | async">
+    <button class="mb-1 m-sm-0" mat-button (click)="clearCache()">clear cache & logs</button>
+    <div class="cache-list d-flex flex-column flex-sm-row flex-sm-wrap">
+      <div class="cache-item m-sm-2 p-3" *ngFor="let c of cache$ | async">
         <div class="cache-item-header d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex flex-column">
             <h4 class="m-0 mb-1">Cached request</h4>
@@ -36,8 +36,8 @@
           </button>
         </div>
         <mat-divider></mat-divider>
-        <pre>{{ c.body | json }}</pre>
+        <pre class="truncate">{{ c.body | json }}</pre>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
