@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { httpInterceptorProviders } from './interceptors';
 import { ScopesComponent } from './scopes/scopes.component';
@@ -40,6 +41,7 @@ import { MatListModule } from '@angular/material/list';
     LayoutModule,
     MatListModule,
     MatDividerModule,
+    MatSlideToggleModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
