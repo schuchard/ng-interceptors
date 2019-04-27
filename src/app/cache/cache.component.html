@@ -1,8 +1,8 @@
 <h1>Caching Interceptor</h1>
-<div class="controls d-flex mt-3 align-items-center">
-  <div class="d-flex flex-column">
+<div class="controls d-flex flex-column flex-sm-row my-3 align-items-start align-items-sm-center">
+  <div class="d-flex flex-row flex-sm-column flex-wrap">
     <button
-      class="m-2"
+      class="m-1 my-sm-1"
       *ngFor="let link of links"
       mat-raised-button
       (click)="request(link.url)"
@@ -10,11 +10,11 @@
     >
       {{ link.name }}
     </button>
-    <button class="m-2" mat-raised-button (click)="response = undefined" color="warn">
+    <button class="m-1 my-sm-1" mat-raised-button (click)="response = undefined" color="warn">
       clear request
     </button>
   </div>
-  <div class="json-output my-3 ml-4">
+  <div class="json-output my-3 ml-sm-4">
     <pre>{{ response | json }}</pre>
   </div>
 </div>
