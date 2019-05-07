@@ -7,7 +7,7 @@ export interface CacheValue {
   key: string;
   body: any;
   dateAdded: number;
-  id: string;
+  id?: string;
 }
 
 @Injectable({
