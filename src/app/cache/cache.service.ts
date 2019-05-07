@@ -1,12 +1,7 @@
-import { Injectable, InjectionToken, Inject } from '@angular/core';
-import * as storage from 'store';
+import { Injectable, Inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LogService } from '../logging.service';
-
-export const CACHE_STORAGE = new InjectionToken<StoreJsAPI>('Cache Storage', {
-  providedIn: 'root',
-  factory: () => storage,
-});
+import { CACHE_STORAGE } from './store.provider';
 
 export interface CacheValue {
   key: string;
