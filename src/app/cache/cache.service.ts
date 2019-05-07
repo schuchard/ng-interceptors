@@ -53,7 +53,7 @@ export class CacheService {
     const cache = [];
     this.store.each((val, key) => cache.push(val));
     // only return items this app sets
-    return cache.filter(c => c.id.startsWith(this.prefixName));
+    return cache.filter(c => c.id && c.id.startsWith(this.prefixName));
   }
 
   cacheChanged() {
