@@ -2,6 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4edf6ad9-27f6-43cb-b844-8ec60fd241d0/deploy-status)](https://app.netlify.com/sites/ng-interceptors/deploys)
 
+## [Demo app](https://ng-interceptors.netlify.com/cache)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server

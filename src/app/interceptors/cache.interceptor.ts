@@ -4,11 +4,10 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders,
   HttpResponse,
 } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, filter } from 'rxjs/operators';
 import { CacheService } from '../cache/cache.service';
 
 @Injectable()
@@ -44,15 +43,14 @@ function sendRequest(
   cache: CacheService
 ): Observable<HttpEvent<any>> {
   return next.handle(req).pipe(
-    tap((event: HttpEvent<any>) => {
-      // There may be other events besides the response.
-      if (event instanceof HttpResponse) {
-        cache.set(req.urlWithParams, {
-          key: req.urlWithParams,
-          body: event.body,
-          dateAdded: Date.now(),
-        });
-      }
+    // There may be other events besides the response.
+    filter(event => event instanceof HttpResponse),
+    tap((event: HttpResponse<any>) => {
+      cache.set(req.urlWithParams, {
+        key: req.urlWithParams,
+        body: event.body,
+        dateAdded: Date.now(),
+      });
     })
   );
 }
