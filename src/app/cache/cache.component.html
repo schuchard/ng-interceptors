@@ -6,7 +6,7 @@
       *ngFor="let link of links"
       mat-raised-button
       (click)="request(link.url)"
-      [ngClass]="{ 'in-cache': inCache(link.url) }"
+      [color]="inCache(link.url) ? 'primary' : ''"
     >
       {{ link.name }}
     </button>
