@@ -24,9 +24,9 @@
   <div class="cache d-flex flex-column align-items-center align-items-sm-start">
     <h2>Cached Requests</h2>
     <button class="mb-1 m-sm-0" mat-button (click)="clearCache()">clear cache & logs</button>
-    <div class="cache-list d-flex flex-column flex-sm-row flex-sm-wrap">
+    <div class="cache-list w-100 d-flex flex-column flex-sm-row flex-sm-wrap">
       <div class="cache-item my-2 m-sm-2 p-3" *ngFor="let c of cache$ | async">
-        <div class="cache-item-header d-flex justify-content-between align-items-center mb-3">
+        <div class="cache-item-header d-flex justify-content-between align-items-center">
           <div class="d-flex flex-column">
             <h4 class="m-0 mb-1">Cached request</h4>
             <small>{{ c.key }}</small>
@@ -35,7 +35,7 @@
             <mat-icon>close</mat-icon>
           </button>
         </div>
-        <mat-divider></mat-divider>
+        <mat-divider class="my-2"></mat-divider>
         <pre class="truncate">{{ c.body | json }}</pre>
       </div>
     </div>
