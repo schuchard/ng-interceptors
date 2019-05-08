@@ -15,7 +15,7 @@ export class XmlComponent implements OnInit {
 
   request() {
     this.http
-      .get('/assets/posts.xml', { responseType: 'text' })
+      .get('/assets/menu.xml', { responseType: 'text' })
       .pipe(map(res => JSON.parse(res)))
       .subscribe(res => (this.response = res));
   }

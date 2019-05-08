@@ -1,11 +1,19 @@
 <h1>Scopes</h1>
-<button class="mr-3" mat-raised-button (click)="request()">request scopes</button>
-<mat-slide-toggle
-  [checked]="scopesService.isAdmin"
-  color="primary"
-  (change)="scopesService.toggleAdmin()"
->
-  isAdmin: {{ scopesService.isAdmin }}
-</mat-slide-toggle>
+<div class="d-flex flex-column">
+  <span class="py-3"
+    >Toggle the isAdmin flag and observe the differences between redirecting and viewing the
+    response.</span
+  >
+  <div>
+    <button class="mr-3" mat-raised-button (click)="request()">request scopes</button>
+    <mat-slide-toggle
+      [checked]="scopesService.isAdmin"
+      color="primary"
+      (change)="scopesService.toggleAdmin()"
+    >
+      isAdmin: {{ scopesService.isAdmin }}
+    </mat-slide-toggle>
+  </div>
 
-<pre>{{ response | json }}</pre>
+  <pre class="py-3">{{ response | json }}</pre>
+</div>
