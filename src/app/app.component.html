@@ -18,7 +18,7 @@
       <div class="mobile-nav-links pt-2 d-flex flex-wrap justify-content-around" *ngIf="isMobile">
         <ng-container *ngTemplateOutlet="navLinks"></ng-container>
       </div>
-      <h3 class="tac">Network Requests</h3>
+      <h3 class="tac py-2">Network Requests</h3>
       <div class="log-controls">
         <button mat-button (click)="clearLogs()">clear logs</button>
       </div>
@@ -53,13 +53,9 @@
       {{ route.path }}
     </button></a
   >
-  <a class="p-1" href="https://github.com/schuchard/ng-interceptors" target="_blank"
-    ><button mat-flat-button>Github</button></a
-  >
-  <a
-    class="p-1"
-    href="https://www.kevinschuchard.com/blog/2019-05-08-http-interceptor/"
-    target="_blank"
-    ><button mat-flat-button>Article</button></a
+  <a class="p-1" *ngFor="let link of externalLinks" href="{{ link.url }}" target="_blank"
+    ><button mat-flat-button color="primary">
+      {{ link.name }} <mat-icon>open_in_new</mat-icon>
+    </button></a
   >
 </ng-template>

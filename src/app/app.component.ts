@@ -14,6 +14,17 @@ export class AppComponent {
   isMobile;
   logs$ = this.logService.logs$;
 
+  externalLinks = [
+    {
+      url: 'https://github.com/schuchard/ng-interceptors',
+      name: 'Github',
+    },
+    {
+      url: 'https://www.kevinschuchard.com/blog/2019-05-08-http-interceptor',
+      name: 'Article',
+    },
+  ];
+
   constructor(private breakpointObserver: BreakpointObserver, private logService: LogService) {
     this.breakpointObserver
       .observe([Breakpoints.HandsetPortrait, Breakpoints.TabletPortrait])
